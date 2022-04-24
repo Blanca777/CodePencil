@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @keyframes closezimu {
+        0% {
+          transform: translate(0px, 0px);
+        }
+        50% {
+          transform: translate(4px, 4px);
+        }
+        100% {
+          transform: translate(-2px, -2px);
+        }
+      }
+      @keyframes openzimubox {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      @keyframes openzimu {
+        0% {
+          font-size: 14px;
+          transform: translateY(0px);
+        }
+        50% {
+          font-size: 12px;
+          transform: translateY(-25%);
+        }
+        100% {
+          transform: translateY(-50%);
+        }
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #container {
+        display: inline-block;
+        padding: 4px;
+        overflow: hidden;
+        user-select: none;
+        transform: scale(4);
+      }
+      #box {
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+      }
+      #box:hover .fontAtClose,
+      #box:hover .fontAtOpen,
+      #box:hover .line {
+        background-color: #fff;
+      }
+      #box:hover .fontAtClose {
+        animation: closezimu 0.1s linear 2;
+      }
+      .line {
+        position: absolute;
+        top: -32px;
+        left: -32px;
+        width: 38px;
+        height: 3px;
+        background-color: #ddd;
+        border-radius: 3px;
+        transform: translate(0, 9px) rotate(45deg);
+        box-shadow: 0 -3px 0 #000;
+        transition: all 0.1s linear;
+      }
+      .fontAtClose {
+        display: none;
+        width: 100%;
+        height: 100%;
+        color: #333;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        background: #ddd;
+        border-radius: 4px;
+        transition: transform 0.4s ease-in-out;
+      }
+
+      .font1 {
+        position: absolute;
+        top: 0;
+        left: 4px;
+      }
+      .font2 {
+        position: absolute;
+        top: 0;
+        right: 4px;
+      }
+      .showline {
+        top: 0;
+        left: 0;
+      }
+      .fontAtOpen {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-color: #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        position: absolute;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .fontAtOpen:hover {
+        animation: openzimubox 0.4s linear;
+      }
+      .fontAtOpen:hover .fontbox {
+        animation: openzimu 0.4s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="box">
+        <div class="fontAtOpen">
+          <div class="fontbox">
+            <div>字 幕</div>
+            <div>字 幕</div>
+          </div>
+        </div>
+        <div class="fontAtClose">
+          <div class="font1">字</div>
+          <div class="font2">幕</div>
+        </div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <script>
+      // console.log(box)
+      let status = true;
+      const box = document.getElementById('box');
+      const fontAtOpen = document.getElementsByClassName('fontAtOpen')[0];
+      const fontAtClose = document.getElementsByClassName('fontAtClose')[0];
+      const line = document.getElementsByClassName('line')[0];
+      box.addEventListener('click', function () {
+        if (status) {
+          line.classList = 'line showline';
+          // line.style.display = 'inline-block';
+          fontAtOpen.style.display = 'none';
+          fontAtClose.style.display = 'inline-block';
+        } else {
+          line.classList = 'line';
+          // line.style.display = 'none';
+          fontAtOpen.style.display = 'inline-block';
+          fontAtClose.style.display = 'none';
+        }
+        status = !status;
+      });
+    </script>
+  </body>
+</html>
