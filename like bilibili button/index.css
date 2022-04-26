@@ -1,4 +1,7 @@
-
+:root {
+  --startColor: #ddd;
+  --endColor2: #fff;
+}
 body {
   width: 100vw;
   height: 100vh;
@@ -27,8 +30,6 @@ body {
   border: 1px solid red;
 }
 
-
-
 /* 播放 */
 #playWrapper {
   position: relative;
@@ -40,7 +41,7 @@ body {
 .play_open {
   border-top: 2vw solid transparent;
   border-bottom: 2vw solid transparent;
-  border-left: 3.5vw solid #ddd;
+  border-left: 3.5vw solid var(--startColor);
   border-right: 0vw solid transparent;
   transform: translate(-100%, 0.5vw);
   transition: all 0.2s ease-in-out;
@@ -63,7 +64,7 @@ body {
   display: inline-block;
   width: 1vw;
   height: 4vw;
-  background-color: #ddd;
+  background-color: var(--startColor);
   border-radius: 1vw;
   position: absolute;
   top: 0.5vw;
@@ -81,7 +82,7 @@ body {
   display: inline-block;
   width: 1vw;
   height: 4vw;
-  background-color: #ddd;
+  background-color: var(--startColor);
   border-radius: 1vw;
   position: absolute;
   top: 0.5vw;
@@ -110,9 +111,6 @@ body {
   }
 }
 
-
-
-
 /* 字幕 */
 #subtitleWrapper {
   display: inline-block;
@@ -133,7 +131,7 @@ body {
 #subtitleContent:hover .subtitle_fontAtOpen,
 #subtitleContent:hover .subtitle_fontAtClose,
 #subtitleContent:hover .subtitle_line {
-  background-color: #fff;
+  background-color: var(--endColor2);
 }
 #subtitleContent:hover .subtitle_fontAtClose {
   animation: closezimu 0.1s linear 2;
@@ -144,7 +142,7 @@ body {
   left: -90%;
   width: 100%;
   height: 16%;
-  background-color: #ddd;
+  background-color: var(--startColor);
   border-radius: 3px;
   transform: translate(-0.1vw, 1.7vw) rotate(35deg);
   box-shadow: 0.4vw -0.5vw 0 #000;
@@ -154,7 +152,7 @@ body {
   width: 100%;
   height: 100%;
   text-align: center;
-  background-color: #ddd;
+  background-color: var(--startColor);
   border-radius: 4px;
   overflow: hidden;
   position: absolute;
@@ -177,7 +175,7 @@ body {
   font-weight: bold;
   font-size: 3vw;
   line-height: 3.5vw;
-  background: #ddd;
+  background: var(--startColor);
   border-radius: 4px;
   transition: transform 0.4s ease-in-out;
 }
@@ -219,9 +217,120 @@ body {
   }
 }
 
-
-#volumeWrapper{
+#volumeWrapper {
   width: 5vw;
   height: 5vw;
-  background-color: #f40;
+  /* background-color: #f40; */
+  position: relative;
+}
+
+.front {
+  position: absolute;
+  top: 1.75vw;
+  left: 0vw;
+  z-index: 3;
+  width: 1vw;
+  height: 1.5vw;
+  border-radius: 0.4vw;
+  background-color: var(--startColor);
+}
+.main {
+  position: absolute;
+  top: 0.65vw;
+  left: 0.5vw;
+  z-index: 3;
+  width: 0;
+  height: 1.25vw;
+  border-top: 1.25vw solid transparent;
+  border-bottom: 1.25vw solid transparent;
+  border-left: 0vw solid transparent;
+  border-right: 2vw solid var(--startColor);
+}
+.line {
+  width: 2.5vw;
+  height: 5vw;
+  position: absolute;
+  top: 0;
+  left: 2.5vw;
+}
+.line1 {
+  position: absolute;
+  top: 1.75vw;
+  left: 0;
+  z-index: 3;
+  width: 0.5vw;
+  height: 1.5vw;
+  border-radius: 100%;
+  background-color: var(--startColor);
+  border-left: 0.75vw solid #000;
+}
+.barrier {
+  position: absolute;
+  top: 0.5vw;
+  left: -2.25vw;
+  width: 3vw;
+  height: 4vw;
+  z-index: 2;
+  background-color: #000;
+}
+.line2 {
+  position: absolute;
+  top: 0.5vw;
+  left: -1.75vw;
+  z-index: 1;
+  width: 3vw;
+  height: 3vw;
+  border-radius: 100%;
+  background-color: transparent;
+  border-top: 0.5vw solid var(--startColor);
+  border-bottom: 0.5vw solid var(--startColor);
+  border-left: 0.5vw solid var(--startColor);
+  border-right: 0.5vw solid var(--startColor);
+}
+#volumeWrapper:hover {
+  transform: scale(0.9);
+  transition: all 0.1s ease-in-out;
+}
+#volumeWrapper:hover .front{
+  border-radius: .2vw;
+}
+#volumeWrapper:hover .line1 {
+  animation: volume_line1 0.5s ease-in-out;
+}
+#volumeWrapper:hover .line2 {
+  animation: volume_line2 0.5s 0.1s ease-in-out;
+}
+@keyframes volume_line1 {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes volume_line2 {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
