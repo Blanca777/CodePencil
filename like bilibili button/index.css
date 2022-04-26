@@ -1,6 +1,6 @@
 :root {
   --startColor: #ddd;
-  --endColor2: #fff;
+  --endColor: #fff;
 }
 body {
   width: 100vw;
@@ -131,7 +131,7 @@ body {
 #subtitleContent:hover .subtitle_fontAtOpen,
 #subtitleContent:hover .subtitle_fontAtClose,
 #subtitleContent:hover .subtitle_line {
-  background-color: var(--endColor2);
+  background-color: var(--endColor);
 }
 #subtitleContent:hover .subtitle_fontAtClose {
   animation: closezimu 0.1s linear 2;
@@ -224,7 +224,7 @@ body {
   position: relative;
 }
 
-.front {
+.volume_front {
   position: absolute;
   top: 1.75vw;
   left: 0vw;
@@ -234,7 +234,7 @@ body {
   border-radius: 0.4vw;
   background-color: var(--startColor);
 }
-.main {
+.volume_main {
   position: absolute;
   top: 0.65vw;
   left: 0.5vw;
@@ -246,14 +246,14 @@ body {
   border-left: 0vw solid transparent;
   border-right: 2vw solid var(--startColor);
 }
-.line {
+.volume_line {
   width: 2.5vw;
   height: 5vw;
   position: absolute;
   top: 0;
   left: 2.5vw;
 }
-.line1 {
+.volume_line1 {
   position: absolute;
   top: 1.75vw;
   left: 0;
@@ -264,7 +264,7 @@ body {
   background-color: var(--startColor);
   border-left: 0.75vw solid #000;
 }
-.barrier {
+.volume_barrier {
   position: absolute;
   top: 0.5vw;
   left: -2.25vw;
@@ -273,7 +273,7 @@ body {
   z-index: 2;
   background-color: #000;
 }
-.line2 {
+.volume_line2 {
   position: absolute;
   top: 0.5vw;
   left: -1.75vw;
@@ -291,13 +291,13 @@ body {
   transform: scale(0.9);
   transition: all 0.1s ease-in-out;
 }
-#volumeWrapper:hover .front{
-  border-radius: .2vw;
+#volumeWrapper:hover .volume_front {
+  border-radius: 0.2vw;
 }
-#volumeWrapper:hover .line1 {
+#volumeWrapper:hover .volume_line1 {
   animation: volume_line1 0.5s ease-in-out;
 }
-#volumeWrapper:hover .line2 {
+#volumeWrapper:hover .volume_line2 {
   animation: volume_line2 0.5s 0.1s ease-in-out;
 }
 @keyframes volume_line1 {
@@ -333,4 +333,69 @@ body {
   100% {
     opacity: 1;
   }
+}
+
+#settingWrapper {
+  width: 5vw;
+  height: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.setting_main {
+  position: relative;
+  display: inline-block;
+  padding: 0.5vw;
+  background-color: #000;
+  border: 0.5vw solid var(--startColor);
+  border-radius: 100%;
+}
+.setting_center {
+  width: 1vw;
+  height: 1vw;
+  background-color: var(--startColor);
+  border-radius: 100%;
+}
+.setting_block1 {
+  width: 1vw;
+  height: 0.8vw;
+  background-color: var(--startColor);
+  position: absolute;
+  top: -1vw;
+  box-shadow: 0 3.2vw 0 var(--startColor);
+  transform-origin: 0.5vw 2vw;
+  transform: rotate(30deg);
+  border-radius: 0.2vw;
+}
+.setting_block2 {
+  width: 1vw;
+  height: 0.8vw;
+  background-color: var(--startColor);
+  position: absolute;
+  top: -1vw;
+  box-shadow: 0 3.2vw 0 var(--startColor);
+  transform-origin: 0.5vw 2vw;
+  transform: rotate(90deg);
+  border-radius: 0.2vw;
+}
+.setting_block3 {
+  width: 1vw;
+  height: 0.8vw;
+  background-color: var(--startColor);
+  position: absolute;
+  top: -1vw;
+  box-shadow: 0 3.2vw 0 var(--startColor);
+  transform-origin: 0.5vw 2vw;
+  transform: rotate(150deg);
+  border-radius: 0.2vw;
+}
+.setting_main:hover {
+  transform: rotate(120deg) scale(.9);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.setting_main:hover .setting_center {
+  background-color: var(--endColor);
+}
+.setting_main:hover .setting_center ~ div {
+  box-shadow: 0 3.2vw 0 var(--endColor);
 }
