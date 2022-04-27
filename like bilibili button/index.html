@@ -9,6 +9,10 @@
     <script src="./index.js" defer></script>
   </head>
   <body>
+    <div id="nav">
+      Click And Hover<br />
+      <span>https://github.com/Blanca777/CodePencil</span>
+    </div>
     <div id="container">
       <!-- 播放 -->
       <div class="box">
@@ -40,14 +44,18 @@
       <!-- 音量 -->
       <div class="box">
         <div id="volumeWrapper">
-          <div class="volume_front"></div>
-          <div class="volume_main"></div>
+          <div class="volume_content volume_open">
+            <div class="volume_front"></div>
+            <div class="volume_main"></div>
 
-          <div class="volume_line">
-            <div class="volume_line2"></div>
-            <div class="volume_barrier"></div>
-            <div class="volume_line1"></div>
+            <div class="volume_line">
+              <div class="volume_line2"></div>
+              <div class="volume_barrier"></div>
+              <div class="volume_line1"></div>
+            </div>
           </div>
+
+          <div class="volume_closeline"></div>
         </div>
       </div>
       <!-- 设置 -->
@@ -61,7 +69,15 @@
           </div>
         </div>
       </div>
-      <div class="box">1</div>
+      <!-- 宽屏 -->
+      <div class="box">
+        <div id="wideScreenWarpper">
+          <div class="wideScreen_main">
+            <div class="wideScreen_left"></div>
+            <div class="wideScreen_right"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

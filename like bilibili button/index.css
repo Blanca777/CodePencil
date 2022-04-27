@@ -8,14 +8,26 @@ body {
   background: #000;
   margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
+#nav{
+  color: #fff;
+  margin-bottom: 2vw;
+  font-size: 2vw;
+  text-align: center;
+}
+#nav span{
+  font-size: 1vw;
+  color: #aaa;
+}
 #container {
   width: 80vw;
   height: 15vw;
-  border: 1px solid red;
+  border: 1vw solid #ddd;
+  border-radius: 1vw;
+  box-shadow: 0.4vw 0.4vw 0.2vw #aaa;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -27,7 +39,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
 }
 
 /* 播放 */
@@ -115,9 +126,9 @@ body {
 #subtitleWrapper {
   display: inline-block;
   box-sizing: border-box;
-  width: 50%;
-  height: 100%;
-  padding: 0.6vw 0;
+  width: 9vw;
+  height: 5vw;
+  padding: 0.6vw;
   overflow: hidden;
   user-select: none;
 }
@@ -134,7 +145,7 @@ body {
   background-color: var(--endColor);
 }
 #subtitleContent:hover .subtitle_fontAtClose {
-  animation: closezimu 0.1s linear 2;
+  animation: closezimu 0.2s linear 2;
 }
 .subtitle_line {
   position: absolute;
@@ -216,18 +227,24 @@ body {
     transform: translateY(-50%) scale(1);
   }
 }
-
+/* 音量 */
 #volumeWrapper {
-  width: 5vw;
+  width: 7vw;
   height: 5vw;
-  /* background-color: #f40; */
+  padding: 0 1vw;
+  box-sizing: border-box;
+  overflow: hidden;
   position: relative;
 }
-
+.volume_content {
+  width: 5vw;
+  height: 5vw;
+  position: relative;
+}
 .volume_front {
   position: absolute;
   top: 1.75vw;
-  left: 0vw;
+  left: 0;
   z-index: 3;
   width: 1vw;
   height: 1.5vw;
@@ -287,18 +304,47 @@ body {
   border-left: 0.5vw solid var(--startColor);
   border-right: 0.5vw solid var(--startColor);
 }
-#volumeWrapper:hover {
-  transform: scale(0.9);
+.volume_closeline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  width: 7vw;
+  height: 0.7vw;
+  border-radius: 0.4vw;
+  background-color: #ddd;
+  box-shadow: 0.1vw -0.2vw 0 #000;
+  transform: translate(0vw, 2.1vw) rotate(35deg);
+  transition: all 0.2s linear;
+}
+.volume_open + .volume_closeline {
+  transform: translate(-7vw, -3vw) rotate(35deg);
+}
+.volume_open:hover {
+  transform: translateY(0.2vw) scale(0.9);
   transition: all 0.1s ease-in-out;
 }
-#volumeWrapper:hover .volume_front {
+.volume_open:hover .volume_front {
+  background-color: var(--endColor);
+
   border-radius: 0.2vw;
 }
-#volumeWrapper:hover .volume_line1 {
+.volume_open:hover .volume_main {
+  border-right: 2vw solid var(--endColor);
+
+  border-radius: 0.2vw;
+}
+.volume_open:hover .volume_line1 {
+  background-color: var(--endColor);
   animation: volume_line1 0.5s ease-in-out;
 }
-#volumeWrapper:hover .volume_line2 {
+.volume_open:hover .volume_line2 {
+  border-color: var(--endColor);
+
   animation: volume_line2 0.5s 0.1s ease-in-out;
+}
+.volume_close:hover {
+  animation: closezimu 0.2s linear 2;
 }
 @keyframes volume_line1 {
   0% {
@@ -335,6 +381,7 @@ body {
   }
 }
 
+/* 设置 */
 #settingWrapper {
   width: 5vw;
   height: 5vw;
@@ -390,7 +437,7 @@ body {
   border-radius: 0.2vw;
 }
 .setting_main:hover {
-  transform: rotate(120deg) scale(.9);
+  transform: rotate(120deg) scale(0.9);
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .setting_main:hover .setting_center {
@@ -398,4 +445,86 @@ body {
 }
 .setting_main:hover .setting_center ~ div {
   box-shadow: 0 3.2vw 0 var(--endColor);
+}
+
+/* 宽屏 */
+#wideScreenWarpper {
+  width: 5vw;
+  height: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wideScreen_main {
+  position: relative;
+  width: 4vw;
+  height: 3vw;
+  background-color: var(--startColor);
+  border-radius: 0.4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wideScreen_left {
+  width: 0.5vw;
+  height: 0.5vw;
+  background-color: transparent;
+  border-bottom: 0.4vw solid #000;
+  border-left: 0.4vw solid #000;
+  transform: translateX(0.75vw) rotate(45deg);
+}
+.wideScreen_right {
+  width: 0.5vw;
+  height: 0.5vw;
+  background-color: transparent;
+  border-top: 0.4vw solid #000;
+  border-right: 0.4vw solid #000;
+  transform: translateX(-0.75vw) rotate(45deg);
+}
+.wideScreen_main:hover {
+  background-color: var(--endColor);
+
+  animation: wideScreen_main 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.wideScreen_main:hover .wideScreen_left {
+  animation: wideScreen_left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.wideScreen_main:hover .wideScreen_right {
+  animation: wideScreen_right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes wideScreen_main {
+  0% {
+    width: 4vw;
+    height: 3vw;
+  }
+  50% {
+    width: 5vw;
+    height: 2.5vw;
+  }
+  100% {
+    width: 4vw;
+    height: 3vw;
+  }
+}
+@keyframes wideScreen_left {
+  0% {
+    transform: translateX(0.75vw) rotate(45deg);
+  }
+  50% {
+    transform: translateX(0.5vw) rotate(45deg);
+  }
+  100% {
+    transform: translateX(0.75vw) rotate(45deg);
+  }
+}
+@keyframes wideScreen_right {
+  0% {
+    transform: translateX(-0.75vw) rotate(45deg);
+  }
+  50% {
+    transform: translateX(-0.5vw) rotate(45deg);
+  }
+  100% {
+    transform: translateX(-0.75vw) rotate(45deg);
+  }
 }
